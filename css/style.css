@@ -1,0 +1,45 @@
+.container {
+    border: 5px solid black;
+    width: 500px; 
+    margin: 80px auto;
+    padding: 10px 50px 25px;
+    box-shadow: 8px 8px 8px rgba(0,0,0,0.5);
+    background-color: whitesmoke;
+    text-align: center;
+    height: 600px;
+}
+#notification-container {
+    border: 3px solid gray;
+    padding: 10px 0;
+    height: 450px;
+    margin-top: 10px;
+    overflow-y: auto;
+}
+button {
+    border: 1px solid black;
+    width: 190px;
+    margin-top: 10px;
+    padding: 12px 20px;
+    background-color: #2b78e4;
+    box-shadow: 3px 3px #000;
+    color: white;
+    cursor: pointer;
+    margin: 20px;
+    font-size: 20px;
+}
+button:hover {
+    transform: scale(1.02);
+    transition: 0.2s ease;
+}
+.socket-id {
+    font-weight: bold;
+}
+.user-joined {
+    color: green;
+}
+.user-disconnected {
+    color: red;
+}
+.user-clicked-button {
+    color: blue;
+}

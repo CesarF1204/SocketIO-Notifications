@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function() {
+            let socket = io.connect(); // socket.io connection
+            //user joined
+            socket.emit("new_user");
+            socket.on("new_user_joined", function(data) {
+                $("#notification-container").append("<p class='user-joined'>" + data.response + "</p>");
+            });
+            //user disconnected
+            socket.on('user_disconnect', function(data){
+                $("#notification-container").append("<p class='user-disconnected'>" + data.response + "</p>");
+            });
+            //user button trigger
+            $("button").on("click", function() {
+                socket.emit("button_clicked");
+            });
+            socket.on("user_clicked_button", function(data) {
+                $("#notification-container").append("<p class='user-clicked-button'>" + data.response + "</p>");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button>Notify Everyone!</button>
+        <div id="notification-container">
+        </div>
+    </div>
+</body>
+</html>
